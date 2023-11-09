@@ -33,6 +33,14 @@ class BlogFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getAllPosts()
 
+        viewModel.posts.observe(viewLifecycleOwner) {
+            count = if ( it.isEmpty() ) {
+                0
+            } else {
+                it.size
+            }
+        }
+
         viewModel.postClicked.observe(viewLifecycleOwner) {post ->
             post.getContentIfNotHandled()?.let {
                 findNavController().navigate(BlogFragmentDirections.actionBlogFragmentToDetailPostFragment(it))
