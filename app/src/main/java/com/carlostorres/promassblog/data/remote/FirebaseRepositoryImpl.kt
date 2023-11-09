@@ -3,8 +3,10 @@ package com.carlostorres.promassblog.data.remote
 import com.carlostorres.promassblog.data.local.entity.PostEntity
 import com.carlostorres.promassblog.utils.constants.Constants.POST_COLLECTION
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.task.await
 
 class FirebaseRepositoryImpl(
     private val database: FirebaseFirestore,
@@ -29,6 +31,18 @@ class FirebaseRepositoryImpl(
     }
 
     override suspend fun savePostToFirestore(postEntity: PostEntity): Flow<Boolean> = flow {
-        emit(false)
+        try {
+            val newPost = database.collection(POST_COLLECTION).document("${postEntity.id}")
+            var uploadSuccessful: Boolean = false
+            newPost.set(postEntity, SetOptions.merge())
+                .addOnSuccessListener {
+                    uploadSuccessful = true
+                }.addOnFailureListener {
+                    uploadSuccessful = false
+                }.await()
+            emit(uploadSuccessful)
+        } catch (exception: Exception) {
+            emit(false)
+        }
     }
 }
