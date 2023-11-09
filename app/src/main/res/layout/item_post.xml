@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="post"
+            type="com.carlostorres.promassblog.data.local.entity.PostEntity" />
+
+        <variable
+            name="listener"
+            type="com.carlostorres.promassblog.domain.listener.PostClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:onClick="@{() -> listener.onClick(post)}"
+        android:layout_marginHorizontal="@dimen/margin_16">
+
+        <View
+            android:id="@+id/viewDividerCategoryTop"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_1"
+            android:background="@color/light_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_16"
+            android:layout_marginTop="@dimen/margin_32"
+            tools:text="Lectura 1"
+            android:text="@{post.title}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewDividerCategoryTop"/>
+
+        <TextView
+            android:id="@+id/author"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_16"
+            tools:text="Gabriel García Marquez"
+            android:text="@{post.author}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title"/>
+
+        <TextView
+            android:id="@+id/date"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_16"
+            tools:text="2023-10-25"
+            setTimestamp="@{post.timeStamp}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/author"/>
+
+        <TextView
+            android:id="@+id/overview"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_16"
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+            android:text="@{post.overview}"
+            android:maxLength="70"
+            android:ellipsize="end"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/date"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

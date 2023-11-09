@@ -12,10 +12,18 @@
         tools:layout="@layout/fragment_blog" >
         <action
             android:id="@+id/action_blogFragment_to_addPostFragment"
-            app:destination="@id/addPostFragment" />
+            app:destination="@id/addPostFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"  />
         <action
             android:id="@+id/action_blogFragment_to_detailPostFragment"
-            app:destination="@id/detailPostFragment" />
+            app:destination="@id/detailPostFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left"  />
     </fragment>
     <fragment
         android:id="@+id/addPostFragment"
@@ -24,7 +32,13 @@
         tools:layout="@layout/fragment_add_post" >
         <action
             android:id="@+id/action_addPostFragment_to_blogFragment"
-            app:destination="@id/blogFragment" />
+            app:destination="@id/blogFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="position"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/detailPostFragment"
@@ -33,6 +47,12 @@
         tools:layout="@layout/fragment_detail_post" >
         <action
             android:id="@+id/action_detailPostFragment_to_blogFragment"
-            app:destination="@id/blogFragment" />
+            app:destination="@id/blogFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="postData"
+            app:argType="com.carlostorres.promassblog.data.local.entity.PostEntity" />
     </fragment>
 </navigation>
