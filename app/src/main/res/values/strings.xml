@@ -21,5 +21,10 @@
 
     <!-- Error message -->
     <string name="error_message">Ocurrió un error al cargar los datos.</string>
+    <string name="network_disconnected_title">¡Houston, tenemos problemas!</string>
+    <string name="network_disconnected_message">
+        Lo sentimos, se ha perido la conexión a internet.
+        Podrás seguir disfrutando del servicio en el modo offline
+    </string>
     <string name="empty_input">Por favor, ingresa los datos solicitados.</string>
 </resources>

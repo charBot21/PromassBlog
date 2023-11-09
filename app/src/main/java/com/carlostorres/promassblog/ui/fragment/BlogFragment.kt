@@ -10,6 +10,9 @@ import androidx.navigation.fragment.findNavController
 import com.carlostorres.promassblog.R
 import com.carlostorres.promassblog.databinding.FragmentBlogBinding
 import com.carlostorres.promassblog.ui.viewmodels.HomeViewModel
+import com.carlostorres.promassblog.utils.resources.NetworkManager
+import com.carlostorres.promassblog.utils.viewUtils.showDialog
+import com.carlostorres.promassblog.utils.viewUtils.toast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,6 +35,16 @@ class BlogFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getAllPosts()
+
+        val networkManager = NetworkManager(requireContext())
+        networkManager.observe(viewLifecycleOwner) {
+            if ( !it ) {
+                showDialog(
+                    getString(R.string.network_disconnected_title),
+                    getString(R.string.network_disconnected_message),
+                    requireContext())
+            }
+        }
 
         viewModel.posts.observe(viewLifecycleOwner) {
             count = if ( it.isEmpty() ) {
