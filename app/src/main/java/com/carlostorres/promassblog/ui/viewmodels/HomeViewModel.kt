@@ -48,8 +48,6 @@ class HomeViewModel @Inject constructor(
                 if ( it.title.toLowerCase().contains(postName.value!!.toLowerCase(Locale.ROOT)) ||
                     it.author.toLowerCase().contains(postName.value!!.toLowerCase(Locale.ROOT)) ||
                     it.overview.toLowerCase().contains(postName.value!!.toLowerCase(Locale.ROOT)) ) {
-                    //_postsList.postValue(it)
-                    //listTmp.postValue(DataStatus.success(listOf(it),false))
                     listTmp.add(it)
                 }
             }

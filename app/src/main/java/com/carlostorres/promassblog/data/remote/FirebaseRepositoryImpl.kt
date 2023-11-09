@@ -6,7 +6,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.task.await
+//import kotlinx.coroutines.task.await
 
 class FirebaseRepositoryImpl(
     private val database: FirebaseFirestore,
@@ -39,7 +39,7 @@ class FirebaseRepositoryImpl(
                     uploadSuccessful = true
                 }.addOnFailureListener {
                     uploadSuccessful = false
-                }.await()
+                }//.await()
             emit(uploadSuccessful)
         } catch (exception: Exception) {
             emit(false)
