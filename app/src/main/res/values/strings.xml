@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">PromassBlog</string>
+
+    <!-- Inputs -->
+    <string name="search_input">Buscar</string>
+    <string name="title_input">Título</string>
+    <string name="author_input">Autor</string>
+    <string name="overview_input">Descripción</string>
+
+    <!-- Tools -->
+    <string name="title_text_tool">Blog</string>
+    <string name="author_text_tool">Autor desconocido</string>
+    <string name="date_text_tool">01/01/2023</string>
+    <string name="overview_text_tool">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat.
+    </string>
+    <string name="add_floating_button_tool">Add Floating Button</string>
+    <string name="check_floating_button_tool">Check Floating Button</string>
+
+    <!-- Error message -->
+    <string name="error_message">Ocurrió un error al cargar los datos.</string>
+    <string name="empty_input">Por favor, ingresa los datos solicitados.</string>
+</resources>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "141653093723",
+    "project_id": "promassblog",
+    "storage_bucket": "promassblog.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:141653093723:android:c0c95315ac90bfee59fe7e",
+        "android_client_info": {
+          "package_name": "com.carlostorres.promassblog"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPtv6GHH1PDmxjHqE2Lj1ROjjgwtHlNqU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,104 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
+    id 'com.google.gms.google-services'
+    id "dagger.hilt.android.plugin"
+}
+
+android {
+    namespace 'com.carlostorres.promassblog'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.carlostorres.promassblog"
+        minSdk 28
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    kapt {
+        correctErrorTypes = true
+    }
+}
+
+dependencies {
+    def lifecycleViewModelVersion = "2.6.1"
+    def lifecycleGeneralVersion = "2.6.1"
+    def kotlinCoroutinesVersion = "1.7.1"
+    def navigationVersion = "2.7.5"
+    def daggerHiltVersion = "2.44.2"
+    def hiltVersion = "1.1.0"
+    def roomVersion = "2.6.0"
+
+    // Android
+    implementation "androidx.core:core-ktx:1.12.0"
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "androidx.fragment:fragment-ktx:1.6.2"
+    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
+
+    // Material
+    implementation "com.google.android.material:material:1.10.0"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
+    //Lifecycle
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleViewModelVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleViewModelVersion"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleGeneralVersion"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinCoroutinesVersion"
+
+    // Dagger - Hilt
+    implementation "com.google.dagger:hilt-android:$daggerHiltVersion"
+    implementation("androidx.hilt:hilt-navigation-fragment:$hiltVersion")
+    kapt "com.google.dagger:hilt-android-compiler:$daggerHiltVersion"
+    kapt "androidx.hilt:hilt-compiler:$hiltVersion"
+
+    // Room
+    implementation "androidx.room:room-runtime:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+
+    //Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
+    // Firebase
+    implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
+    implementation("com.google.firebase:firebase-firestore")
+
+    // Unit Test
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
