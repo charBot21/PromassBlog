@@ -50,6 +50,13 @@ El presente proyecto tiene como finalidad el poder realizar un proyecto que de l
 - Version mínima de SDK Android para funcionar 28
 - Bibliotecas
   - Lifecycle 2.6.1
+  - Dagger 2.44.2
+  - Hilt 1.1.0
+  - Room 2.6.0
+  - Coroutines 1.7.1
+  - Navigation 2.7.5
+  - Firebase BOM 32.3.1
+  - Firestore
 
 
 ### Herramientas
