@@ -21,6 +21,7 @@
 
     <!-- Error message -->
     <string name="error_message">Ocurrió un error al cargar los datos.</string>
+    <string name="network_lost">Lo sentimos, no tienes conexión a internet, no podemos agregar nuevos posts.</string>
     <string name="network_disconnected_title">¡Houston, tenemos problemas!</string>
     <string name="network_disconnected_message">
         Lo sentimos, se ha perido la conexión a internet.

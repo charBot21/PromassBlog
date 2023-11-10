@@ -21,6 +21,7 @@ class BlogFragment : Fragment() {
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var binding: FragmentBlogBinding
     private var count = 0
+    private var networkState = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +40,7 @@ class BlogFragment : Fragment() {
         val networkManager = NetworkManager(requireContext())
         networkManager.observe(viewLifecycleOwner) {
             if ( !it ) {
+                networkState = it
                 showDialog(
                     getString(R.string.network_disconnected_title),
                     getString(R.string.network_disconnected_message),
@@ -62,7 +64,14 @@ class BlogFragment : Fragment() {
 
         binding.apply {
             fbAddPost.setOnClickListener {
-                findNavController().navigate(BlogFragmentDirections.actionBlogFragmentToAddPostFragment(count))
+                if ( networkState ) {
+                    findNavController().navigate(BlogFragmentDirections.actionBlogFragmentToAddPostFragment(count))
+                } else {
+                    showDialog(
+                        getString(R.string.network_disconnected_title),
+                        getString(R.string.network_lost),
+                        requireContext())
+                }
             }
         }
     }
